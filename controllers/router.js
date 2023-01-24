@@ -49,7 +49,7 @@ router.post("/", async (req, res) => {
 //show route 
 router.get("/job/:id", async (req, res) => {
     try{
-        res.json(await job.findById(req.params))
+        res.json(await job.findById(req.params.id))
     }catch (error){
         res.status(400).json(error)
     }
