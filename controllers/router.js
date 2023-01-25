@@ -46,4 +46,13 @@ router.post("/", async (req, res) => {
     }
 })
 
+//show route 
+router.get("/:id", async (req, res) => {
+    try{
+        res.json(await job.findById(req.params.id))
+    }catch (error){
+        res.status(400).json(error)
+    }
+})
+
 module.exports = router
