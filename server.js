@@ -7,20 +7,20 @@ const morgan =require("morgan")
 const jobsRouter = require("./controllers/router")
 const userRouter = require("./controllers/user")
 const auth = require("./auth")
+const mongoose = require("./models/connection")
 //application object
 const app=express()
 //middleware
 app.use(cors()) 
-app.use(morgan("dev")) 
+app.use(morgan("tiny")) 
 app.use(express.json())
-app.use(express.urlencoded({extended : true}))
 
-//routers
-app.use("/jobs", jobsRouter)
-app.use("/user", userRouter)
 //routes
 app.get("/", auth, (req, res) => {
     res.json(req.payload)
 })
+//routers
+app.use("/jobs", jobsRouter)
+app.use("/user", userRouter)
 //app listener
 app.listen(PORT, () => console.log(`Server is listening on PORT ${PORT}...`))

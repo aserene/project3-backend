@@ -1,12 +1,10 @@
 require("dotenv").config()
 const mongoose = require("mongoose")
+const config = {useUnifiedTopology: true, useNewUrlParser: true}
+const {DATABASE_URL} = process.env
 
-mongoose.set('strictQuery', false); // Allows Mongo to accept information outside of the parameters 
-
-mongoose.connect(process.env.DATABASE_URL, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-})
+mongoose.set('strictQuery', false) // Allows Mongo to accept information outside of the parameters 
+mongoose.connect(DATABASE_URL, config)
 
 mongoose.connection
 .on("open", () => console.log("Mongoose connected"))

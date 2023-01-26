@@ -44,7 +44,8 @@ router.post("/login", async (req, res) => {
         }else {
             res.status(400).json({error: "USER DOES NOT EXIST"})
         }
-    } catch (error) {
+    } 
+     catch (error) {
         res.status(400).json({error})
     }
 })
